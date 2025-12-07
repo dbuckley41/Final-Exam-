@@ -1,0 +1,544 @@
+/* ============================================
+   STYLES.CSS - Probability and Odds Visualizer
+   Dark modern theme with responsive design
+   ============================================ */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+    color: #e0e6ed;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #667eea;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Sections Wrapper (Two Columns) */
+.sections-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Interactive Sections */
+.interactive-section {
+    background: linear-gradient(135deg, rgba(30, 35, 50, 0.8) 0%, rgba(25, 30, 45, 0.8) 100%);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.interactive-section h2 {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Control Group */
+.control-group {
+    margin-bottom: 25px;
+}
+
+.control-group label {
+    display: block;
+    font-weight: 600;
+    color: #b0b8d4;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+/* Slider */
+.slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    outline: none;
+    -webkit-appearance: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(102, 126, 234, 0.6);
+    transition: all 0.2s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.8);
+}
+
+.slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 12px rgba(102, 126, 234, 0.6);
+    transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.8);
+}
+
+.slider::-moz-range-track {
+    background: transparent;
+    border: none;
+}
+
+/* Number Input */
+.number-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #e0e6ed;
+    background: rgba(15, 20, 25, 0.5);
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.number-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(15, 20, 25, 0.8);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Value Display */
+.value-display {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 4px solid #667eea;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #b0b8d4;
+    margin: 8px 0;
+}
+
+.metric-value span {
+    color: #667eea;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Real-World Examples Panel */
+.real-world-panel {
+    margin-top: 16px;
+    background: rgba(102, 126, 234, 0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border-left: 4px solid rgba(102, 126, 234, 0.35);
+}
+
+.real-world-panel .metric-value {
+    margin: 0;
+    font-size: 0.98rem;
+    color: #cfe0ff;
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin: 20px 0;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.chart-container canvas {
+    max-height: 100%;
+}
+
+/* Formula Display */
+.formula {
+    background: rgba(102, 126, 234, 0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #b0b8d4;
+    border-left: 4px solid #667eea;
+}
+
+.formula p {
+    font-style: italic;
+}
+
+/* Practice Section */
+.practice-section {
+    background: linear-gradient(135deg, rgba(30, 35, 50, 0.8) 0%, rgba(25, 30, 45, 0.8) 100%);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.practice-section h2 {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(102, 126, 234, 0.25);
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Questions Container */
+.questions-container {
+    background: rgba(102, 126, 234, 0.08);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.question-item {
+    background: rgba(30, 35, 50, 0.6);
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.question-text {
+    font-size: 1rem;
+    color: #b0b8d4;
+    font-weight: 500;
+}
+
+.question-input {
+    padding: 8px 12px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    min-width: 120px;
+    color: #e0e6ed;
+    background: rgba(15, 20, 25, 0.6);
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Answer Key Container */
+.answer-key-container {
+    background: rgba(102, 126, 234, 0.12);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    border-left: 4px solid #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.answer-key-container h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.answer-item {
+    background: rgba(30, 35, 50, 0.5);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border-left: 3px solid #667eea;
+    font-size: 0.95rem;
+    color: #b0b8d4;
+    line-height: 1.5;
+}
+
+.answer-item strong {
+    color: #667eea;
+}
+
+/* Feedback styles for submitted answers */
+.answer-correct {
+    background: rgba(46, 204, 113, 0.12);
+    border-left-color: rgba(46, 204, 113, 0.6);
+    color: #bff2d8;
+}
+
+.answer-incorrect {
+    background: rgba(231, 76, 60, 0.08);
+    border-left-color: rgba(231, 76, 60, 0.7);
+    color: #ffd7d2;
+}
+
+.small-hint {
+    font-size: 0.9rem;
+    color: #cfe0ff;
+}
+
+/* Simulation Section */
+.simulation-section {
+    background: linear-gradient(135deg, rgba(30, 35, 50, 0.8) 0%, rgba(20, 25, 40, 0.85) 100%);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(102, 126, 234, 0.12);
+}
+
+.simulation-section h2 {
+    font-size: 1.3rem;
+    color: #9fb3ff;
+    margin-bottom: 14px;
+}
+
+.sim-stats {
+    color: #cfe0ff;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.sim-stats strong {
+    color: #fff;
+    margin-left: 6px;
+}
+
+/* Explanation Section */
+.explanation-section {
+    background: linear-gradient(135deg, rgba(30, 35, 50, 0.8) 0%, rgba(25, 30, 45, 0.8) 100%);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.explanation-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #b0b8d4;
+    padding: 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - Mobile and Tablet
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .sections-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .interactive-section,
+    .practice-section,
+    .explanation-section {
+        padding: 20px;
+    }
+
+    .interactive-section h2,
+    .practice-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .question-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .header {
+        padding: 25px 15px 20px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .main-content {
+        gap: 20px;
+    }
+
+    .interactive-section,
+    .practice-section,
+    .explanation-section {
+        padding: 15px;
+    }
+
+    .control-group {
+        margin-bottom: 20px;
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    .value-display {
+        padding: 12px;
+    }
+
+    .metric-value {
+        font-size: 0.95rem;
+    }
+
+    .metric-value span {
+        font-size: 1rem;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}

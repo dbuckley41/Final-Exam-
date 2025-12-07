@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Odds Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Probability and Odds Visualizer</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Interactive Sections -->
+            <div class="sections-wrapper">
+                <!-- Log-Odds (Logit) Section -->
+                <section class="interactive-section">
+                    <h2>Log-Odds (Logit) Function</h2>
+                    
+                    <!-- Slider and Value Display -->
+                    <div class="control-group">
+                        <label for="logit-slider">Select Probability:</label>
+                        <input 
+                            type="range" 
+                            id="logit-slider" 
+                            class="slider" 
+                            min="0.01" 
+                            max="0.99" 
+                            step="0.01" 
+                            value="0.5"
+                        >
+                        <div class="value-display">
+                            <p class="metric-value">Probability: <span id="logit-prob-value">0.500</span></p>
+                            <p class="metric-value">Odds: <span id="logit-odds-value">1.000</span></p>
+                            <p class="metric-value">Log-Odds: <span id="logit-value">0.000</span></p>
+                        </div>
+                        <!-- Real-World Examples Panel -->
+                        <div class="real-world-panel" aria-live="polite">
+                            <p id="real-world-example" class="metric-value">A relatable example will appear here based on the selected probability.</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="chart-container">
+                        <canvas id="logit-chart"></canvas>
+                    </div>
+                    
+                    <!-- Formula Display -->
+                    <div class="formula">
+                        <p>Log-Odds (Logit) = ln(p / (1 - p))</p>
+                    </div>
+                </section>
+
+                <!-- Probability vs Odds Comparison Section -->
+                <section class="interactive-section">
+                    <h2>Probability vs Odds Growth</h2>
+                    
+                    <!-- Input and Value Display -->
+                    <div class="control-group">
+                        <label for="comparison-input">Enter Probability (0-1):</label>
+                        <input 
+                            type="number" 
+                            id="comparison-input" 
+                            class="number-input" 
+                            min="0" 
+                            max="1" 
+                            step="0.01" 
+                            value="0.5"
+                        >
+                        <div class="value-display">
+                            <p class="metric-value">Probability: <span id="comp-prob-value">0.500</span></p>
+                            <p class="metric-value">Odds: <span id="comp-odds-value">1.000</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="chart-container">
+                        <canvas id="comparison-chart"></canvas>
+                    </div>
+                    
+                    <!-- Formula Display -->
+                    <div class="formula">
+                        <p>Probability: p | Odds: p / (1 - p)</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Simulation Section -->
+            <section class="simulation-section">
+                <h2>Probability Simulation</h2>
+                <div class="control-group">
+                    <label for="simulation-trials">Number of Trials:</label>
+                    <select id="simulation-trials" class="number-input">
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                    </select>
+
+                        <div style="margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                            <label for="simulation-probability" style="font-weight:600; color:#b0b8d4;">Simulation Probability:</label>
+                            <input id="simulation-probability" class="number-input" type="number" min="0.01" max="0.99" step="0.01" value="0.5" />
+                            <div style="width:8px;"></div>
+                            <button id="run-simulation-btn" class="btn-primary">Run Simulation</button>
+                            <div class="sim-stats">
+                                <div>Sim p: <strong id="sim-prob-display">0.500</strong></div>
+                                <div>Successes: <strong id="sim-successes">—</strong></div>
+                                <div>Failures: <strong id="sim-failures">—</strong></div>
+                                <div>Simulated Rate: <strong id="sim-rate">—</strong></div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="simulation-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Practice Questions Section -->
+            <section class="practice-section">
+                <h2>Practice Questions</h2>
+                <button id="generate-questions-btn" class="btn-primary">Generate New Questions</button>
+                
+                <!-- Questions Container -->
+                <div id="questions-container" class="questions-container">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Submit Answers Button -->
+                <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                    <button id="submit-answers-btn" class="btn-primary">Submit Answers</button>
+                    <div id="questions-feedback" style="color:#cfe0ff; font-weight:600;"></div>
+                </div>
+
+                <!-- Answer Key Toggle -->
+                <button id="answer-key-toggle" class="btn-secondary">Show Answer Key</button>
+                
+                <!-- Answer Key Container -->
+                <div id="answer-key-container" class="answer-key-container" style="display: none;">
+                    <!-- Answers will be inserted here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Explanation Section -->
+            <section class="explanation-section">
+                <p class="explanation-text">
+                    <strong>Key Concept:</strong> Probability, odds, and log-odds are three related ways to express the likelihood of an event, each useful for different types of reasoning or statistical modeling.
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Probability and Odds Visualizer. Created for educational purposes.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
